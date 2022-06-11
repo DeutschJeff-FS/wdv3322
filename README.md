@@ -1,8 +1,10 @@
-# wdv3322-week1
+# WDV3322
 
-## Modularization
+## Week 1
 
-### Requirements
+### Modularization
+
+#### Requirements
 
 1. Add a GET /profile route
 2. Add POST /login and /signup routes
@@ -15,3 +17,5 @@
    - zip
    - email
    - password
+
+## Week 2
