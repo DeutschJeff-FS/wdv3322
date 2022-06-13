@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const mongoose = require("mongoose");
 
+const options = require("../config/options");
 const userRoute = require("../api/routes/userRoute");
 
 // Parsing middleware
@@ -11,23 +13,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Middleware for handling CORS and headers
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-
-  if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
-  }
-  next();
-});
+app.use(cors(options));
 
 // GET request to check server
 app.get("/", (req, res) => {
   res.status(200).json({
     message: `Service is up and running.`,
+    method: req.method,
   });
 });
 
