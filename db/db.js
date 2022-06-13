@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const User = require("../api/model/user");
 
 const connect = async () => {
-  await mongoose.connect();
+  await mongoose.connect("mongodb://localhost:27017/users");
 };
 
 const findUser = async (email) => {
